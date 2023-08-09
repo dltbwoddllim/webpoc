@@ -4,8 +4,8 @@ import "moment/locale/en-gb";
 import { NewsContext } from "../../../../webpoc/frontreact/contexts/NewsContext";
 import Pagination from "./Pagination";
 import Loading from "./Loading";
-import axios from "axios";
 
+const API_BASE_URL = "http://localhost:8080";
 
 const NewsPage = () => {
   const { newsItems, isLoading, filteredNewsItems } = useContext(NewsContext);
@@ -15,6 +15,7 @@ const NewsPage = () => {
   const itemsPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(news.length / itemsPerPage);
+
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -63,7 +64,7 @@ const NewsPage = () => {
                       {moment(item.date).fromNow()}
                     </p>
                     <a
-                      href={item.postUrl}
+                      href={`${window.location.href}article/${item.article_id}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="border border-blue-500 text-blue-500 py-2 px-4 rounded-md hover:bg-blue-500 hover:text-white transition-all duration-200"

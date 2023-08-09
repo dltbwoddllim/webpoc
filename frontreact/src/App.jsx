@@ -18,6 +18,7 @@ const App = () => {
       const response = await axios.get(`${API_BASE_URL}/User/main`, { headers });
       setNewsItems(response.data);
       setLoading(false);
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

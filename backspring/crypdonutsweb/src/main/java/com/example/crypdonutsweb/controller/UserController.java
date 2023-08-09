@@ -1,9 +1,7 @@
 package com.example.crypdonutsweb.controller;
 
 
-import com.example.crypdonutsweb.Entity.ArticleEntity;
-import com.example.crypdonutsweb.service.mainpage;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.example.crypdonutsweb.service.page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +14,15 @@ public class UserController {
 
     @GetMapping("/main")
     public ResponseEntity<String> getLatestArticles() {
-        String articles = mainpage.getLatestArticles();
+        String articles = page.getLatestArticles();
         return ResponseEntity.ok(articles);
     }
+
+    @GetMapping("/article/{id}")
+    public ResponseEntity<String> getArticle(@PathVariable("id") Long id) {
+
+        String article = page.getArticle(id);
+        return ResponseEntity.ok(article);
+    }
+
 }

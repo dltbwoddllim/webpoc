@@ -2,19 +2,22 @@ package com.example.crypdonutsweb.DTO;
 
 import java.time.LocalDate;
 
-public class ArticleDTO {
+public class ArticlesDTO {
     private Long article_id;
     private Long author_id;
     private Long title_id;
     private String name;
     private String title;
     private String subtitle;
-    private String text;
     private LocalDate date;
     private String tag;
 
 
-    public ArticleDTO(Long articleId, Long authorId, Long titleId, String name, String title, String subtitle, LocalDate date, String tag, String text) {
+    public ArticlesDTO() {
+
+    }
+
+    public ArticlesDTO(Long articleId, Long authorId, Long titleId, String name, String title, String subtitle, LocalDate date, String tag) {
         this.article_id = articleId;
         this.author_id = authorId;
         this.title_id = titleId;
@@ -22,11 +25,7 @@ public class ArticleDTO {
         this.title = title;
         this.subtitle = subtitle;
         this.date = date;
-        this.text = text;
         this.tag = tag;
-    }
-
-    public ArticleDTO() {
     }
 
     //getter setter
@@ -67,14 +66,6 @@ public class ArticleDTO {
         return title;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
     //tostring
     @Override
     public String toString() {
@@ -101,7 +92,6 @@ public class ArticleDTO {
                 ", \"subtitle\":\"" + subtitle + '\"' +
                 ", \"date\":\"" + date + '\"' +
                 ", \"tag\":\"" + tag + '\"' +
-                ", \"text\":\"" + text + '\"' +
                 '}';
     }
 }

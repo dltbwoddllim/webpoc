@@ -7,104 +7,128 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "article")
 public class ArticleEntity {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "article_id")
-        private Long articleId;
+//    Result: 1,1,1,John Doe,Introduction to SQL,https://assets.digitalocean.com/articles/how-to-use-sql-header/SQL-header-image.jpg,2023-08-04,In this tutorial, we will...,SQL
 
-        @Column(name = "author_id")
-        private Long authorId;
+    @Id
+    @Column(name = "article_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long articleId;
 
-        @Column(name = "title_id")
-        private Long titleId;
+    @Column(name = "author_id")
+    private Long authorId;
 
-        private String name;
-        private String title;
-        private String subtitle;
-        private LocalDate date;
-        private String tag;
+    @Column(name = "title_id")
+    private Long titleId;
 
-        // 생성자, Getter, Setter 등 필요한 메서드를 추가해주세요.
+    @Column(name = "name")
+    private String name;
 
-        // 기본 생성자
-        public ArticleEntity() {
-        }
+    @Column(name = "title")
+    private String title;
 
-        // 생성자
-        public ArticleEntity(Long authorId, Long titleId, String name, String title,
-                             String subtitle, LocalDate date, String tag) {
-            this.authorId = authorId;
-            this.titleId = titleId;
-            this.name = name;
-            this.title = title;
-            this.subtitle = subtitle;
-            this.date = date;
-            this.tag = tag;
-        }
+    @Column(name = "subtitle")
+    private String subtitle;
 
-        // Getter, Setter
-        public Long getArticleId() {
-            return articleId;
-        }
+    @Column(name = "date")
+    private LocalDate date;
 
-        public void setArticleId(Long articleId) {
-            this.articleId = articleId;
-        }
+    @Column(name = "text")
+    private String text;
 
-        public Long getAuthorId() {
-            return authorId;
-        }
+    @Column(name = "tag")
+    private String tag;
+    // 생성자, Getter, Setter 등 필요한 메서드를 추가해주세요.
 
-        public void setAuthorId(Long authorId) {
-            this.authorId = authorId;
-        }
+    // 기본 생성자
+    public ArticleEntity() {
 
-        public Long getTitleId() {
-            return titleId;
-        }
+    }
+    // 생성자 a.article_id, a.author_id, a.title_id, au.name, t.title, t.subtitle, t.date, t.text, t.tag
+    public ArticleEntity(Long articleId, Long authorId, Long titleId, String name, String title,
+                         String subtitle, LocalDate date, String text, String tag) {
+        this.articleId = articleId;
+        this.authorId = authorId;
+        this.titleId = titleId;
+        this.name = name;
+        this.title = title;
+        this.subtitle = subtitle;
+        this.date = date;
+        this.text = text;
+        this.tag = tag;
+    }
 
-        public void setTitleId(Long titleId) {
-            this.titleId = titleId;
-        }
+    // Getter, Setter
+    public Long getArticleId() {
+        return articleId;
+    }
 
-        public String getName() {
-            return name;
-        }
+    public void setArticleId(Long articleId) {
+        this.articleId = articleId;
+    }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+    public Long getAuthorId() {
+        return authorId;
+    }
 
-        public String getTitle() {
-            return title;
-        }
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
+    }
 
-        public void setTitle(String title) {
-            this.title = title;
-        }
+    public Long getTitleId() {
+        return titleId;
+    }
 
-        public String getSubtitle() {
-            return subtitle;
-        }
+    public void setTitleId(Long titleId) {
+        this.titleId = titleId;
+    }
 
-        public void setSubtitle(String subtitle) {
-            this.subtitle = subtitle;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public LocalDate getDate() {
-            return date;
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        public void setDate(LocalDate date) {
-            this.date = date;
-        }
+    public String getTitle() {
+        return title;
+    }
 
-        public String getTag() {
-            return tag;
-        }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-        public void setTag(String tag) {
-            this.tag = tag;
-        }
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 
 }
