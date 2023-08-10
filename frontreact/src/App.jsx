@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import axios from "axios";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom"; 
 import { NewsContextProvider } from "../../../webpoc/frontreact/contexts/NewsContext";
 import Navbar from "./components/Navbar";
 import NewsPage from "./components/News";
+import ArticlePage from "./components/ArticlePage";
 
 const API_BASE_URL = "http://localhost:8080";
 
@@ -18,7 +20,6 @@ const App = () => {
       const response = await axios.get(`${API_BASE_URL}/User/main`, { headers });
       setNewsItems(response.data);
       setLoading(false);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -53,13 +54,35 @@ const App = () => {
         setSearchQuery,
         searchQuery,
         filteredNewsItems,
-        setFilteredNewsItems,
-      }}
+        setFilteredNewsItems,      }}
     >
-      <Navbar />
-      <NewsPage key={filteredNewsItems.length} />
+    <Navbar />
+      <Router> 
+        <Routes>
+          <Route path="/" element={<NewsPage key={filteredNewsItems.length} />}> </Route>
+          <Route path="/article/:id" element={<ArticlePage />} > </Route>
+        </Routes>
+      </Router>
     </NewsContextProvider>
   );
+  // return (
+  //   <NewsContextProvider
+  //     value={{
+  //       newsItems,
+  //       setNewsItems,
+  //       isLoading,
+  //       setLoading,
+  //       fetchNews,
+  //       setSearchQuery,
+  //       searchQuery,
+  //       filteredNewsItems,
+  //       setFilteredNewsItems,
+  //     }}
+  //   >
+  //     <Navbar />
+  //     <NewsPage key={filteredNewsItems.length} />
+  //   </NewsContextProvider>
+  // );
 };
 
 export default App;

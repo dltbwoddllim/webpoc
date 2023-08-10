@@ -5,11 +5,9 @@ import { NewsContext } from "../../../../webpoc/frontreact/contexts/NewsContext"
 import Pagination from "./Pagination";
 import Loading from "./Loading";
 
-const API_BASE_URL = "http://localhost:8080";
-
 const NewsPage = () => {
   const { newsItems, isLoading, filteredNewsItems } = useContext(NewsContext);
-
+  console.log(filteredNewsItems)
   const news = filteredNewsItems.length ? filteredNewsItems : newsItems;
 
   const itemsPerPage = 12;
