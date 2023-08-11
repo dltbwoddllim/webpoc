@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom"; 
-import { NewsContextProvider } from "../../../webpoc/frontreact/contexts/NewsContext";
+import { NewsContextProvider } from "../contexts/NewsContext";
 import Navbar from "./components/Navbar";
 import NewsPage from "./components/News";
 import ArticlePage from "./components/ArticlePage";
@@ -16,7 +16,7 @@ const App = () => {
 
   const fetchNews = useCallback(async () => {
     try {
-      const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:5173' };
+      const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:3000' };
       const response = await axios.get(`${API_BASE_URL}/User/main`, { headers });
       setNewsItems(response.data);
       setLoading(false);

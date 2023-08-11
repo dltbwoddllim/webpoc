@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import moment from "moment";
 import "moment/locale/en-gb";
-import { NewsContext } from "../../../../webpoc/frontreact/contexts/NewsContext";
+import { NewsContext } from "../../contexts/NewsContext";
 import Pagination from "./Pagination";
 import Loading from "./Loading";
 

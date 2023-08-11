@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { NewsContext } from "../../../../webpoc/frontreact/contexts/NewsContext";
+import { NewsContext } from "../../contexts/NewsContext";
 
 function Navbar() {
   const { setSearchQuery, searchQuery } = useContext(NewsContext);
@@ -15,7 +15,7 @@ function Navbar() {
           href="/"
           className="text-xl font-bold cursor-pointer text-white transition-all duration-500 hover:text-blue-500"
         >
-          My Website
+          Crypdonuts
         </a>
       </div>
       <form className="w-full max-w-sm p-2">
@@ -23,7 +23,7 @@ function Navbar() {
           <input
             className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-1 leading-tight focus:outline-none"
             type="text"
-            placeholder="Search"
+            placeholder="Search by title"
             value={searchQuery}
             onChange={handleSearch}
           />

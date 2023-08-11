@@ -20,7 +20,6 @@ public class ArticlesMapper {
                 entity.getDate(),
                 entity.getTag()
         );
-        System.out.println(dto.toString());
         return dto;
     }
 

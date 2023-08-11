@@ -51,7 +51,6 @@ public class page {
         //dtos print
         // DTO 리스트를 JSON으로 변환
         String articleJson = articleDTO.toJson();
-        System.out.println(articleJson);
 
         return articleJson;
     }
