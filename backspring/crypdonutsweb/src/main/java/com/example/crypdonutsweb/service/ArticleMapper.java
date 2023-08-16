@@ -18,7 +18,6 @@ public class ArticleMapper {
                 entity.getTag(),
                 entity.getText()
         );
-        System.out.println(dto.toString());
         return dto;
     }
 

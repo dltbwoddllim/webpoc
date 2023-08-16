@@ -2,8 +2,10 @@ package com.example.crypdonutsweb.controller;
 
 
 import com.example.crypdonutsweb.service.page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -22,6 +24,9 @@ public class UserController {
     public ResponseEntity<String> getArticle(@PathVariable("id") Long id) {
 
         String article = page.getArticle(id);
+        if (article == null) {
+            return ResponseEntity.badRequest().body("Article not found");
+        }
         return ResponseEntity.ok(article);
     }
 

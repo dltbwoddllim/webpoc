@@ -7,7 +7,9 @@ import com.example.crypdonutsweb.DTO.ArticlesDTO;
 import com.example.crypdonutsweb.Entity.ArticlesEntity;
 import com.example.crypdonutsweb.Entity.ArticleEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 @Service
@@ -42,9 +44,11 @@ public class page {
 
     public static String getArticle(Long id){
         //데이터 베이스에서 데이터 가져오기
+        //반환값이 비어있을 경우 예외 처리 코드 추가
         ArticleEntity articleEntity = articleRepository.getArticle(id);
-        //object key, value print
-
+        if (articleEntity == null) {
+            return null;
+        }
         // Entity 리스트를 DTO 리스트로 변환
         ArticleDTO articleDTO = articleMapper.mapEntityToDTO(articleEntity);
 
