@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import NewsPage from "./components/News";
 import ArticlePage from "./components/ArticlePage";
 
+// const API_BASE_URL = "http://34.64.40.161:8080";
 const API_BASE_URL = "http://localhost:8080";
 
 const App = () => {
