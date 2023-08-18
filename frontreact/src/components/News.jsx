@@ -1,97 +1,112 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useCallback } from "react";
 import moment from "moment";
 import "moment/locale/en-gb";
 import { NewsContext } from "../../contexts/NewsContext";
 import Pagination from "./Pagination";
+import axios from "axios";
 import Loading from "./Loading";
+import Newsletter from "./newsletter";
+
+const API_BASE_URL = "http://localhost:8080";
 
 const NewsPage = () => {
   const { newsItems, isLoading, filteredNewsItems } = useContext(NewsContext);
-  console.log(filteredNewsItems)
   const news = filteredNewsItems.length ? filteredNewsItems : newsItems;
 
-  const itemsPerPage = 12;
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(news.length / itemsPerPage);
+  const itemsPerPage = 9;
 
+  var index = "";
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const tag = urlParams.get('tag');
+  const author_name = urlParams.get('author_name');
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  if (tag != null) {
+    index = tag;
+  } else if (author_name != null) {
+    index = author_name;
+  }
+  else {
+    index = "Latest News!"
+  }
+  const startIndex = 0;
+  const endIndex = startIndex + itemsPerPage;
+  // var currentItems = news?.slice(startIndex, endIndex);
+  // //last item in currentitems
+  // var lastItemid = currentItems[currentItems.length - 1];
+  // console.log(lastItemid)
+  // type of newsItems
+  // console.log(typeof newsItems)
+  // console.log(newsItems)
+  const [currentItems, setCurrentItems] = useState(news?.slice(startIndex, endIndex));
+  var lastItemid = currentItems[currentItems.length - 1];
+  console.log(lastItemid)
+  const fetchNews = useCallback(async (lastItemid) => {
+    try {
+      const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:3000' };
+      const response = await axios.get(`${API_BASE_URL}/User/main/afterid/${lastItemid}`, { headers });
+      setCurrentItems(currentItems => [...currentItems, ...response.data]); // Update currentItems using prevState
+      console.log(currentItems)
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  //if loadmore button is clicked, fetch more news after last itemid andthen newsItems = newsItems + response.data load article
+  const handleLoadMore = () => {
+    fetchNews(lastItemid.article_id);
   };
 
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentItems = news?.slice(startIndex, endIndex);
+
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* <div className="flex flex-col items-center mb-7">
-        <h1 className="text-5xl font-bold mb-2 text-gray-900">
-          <span className="text-blue-600">LATEST</span> NEWS
-        </h1>
-        <div className="w-20 h-1 bg-blue-600 mb-8"></div>
-      </div> */}
-
       {isLoading ? (
         <Loading />
       ) : (
         <>
-<div class="container mx-auto my-16 px-4 md:px-8">
-  <section class="mb-12 text-center">
-    <h2 class="text-2xl md:text-3xl font-semibold mb-6">Latest Articles</h2>
-    <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
-      {currentItems.map((item) => (
-        <div key={item.article_id} class="mb-8">
-          <div class="relative overflow-hidden rounded-lg shadow-lg bg-gray-100 dark:bg-gray-800 transform transition-transform duration-300 hover:scale-105">
-            <img src={item.subtitle} class="w-full h-48 object-cover" alt="Article Thumbnail" />
-            <a href={`/article/${item.article_id}`}>
-              <div class="absolute inset-0 opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
-            </a>
-          </div>
-          <div class="mt-3 font-semibold text-pink-500 text-left">{item.tag}</div>
-          <h5 class="text-lg font-semibold my-1 text-left">{item.title}</h5>
-          <p class="mb-4 text-gray-600 dark:text-gray-300 text-left">
-            <small>Published on <u>{item.date}</u> by <a href="#!" class="text-gray-500">{item.name}</a></small>
-          </p>
-        </div>
-      ))}
-    </div>
-  </section>
-</div>
-
-
-
-          {/* <div class="container mx-auto my-24 md:px-6">
-            <section class="mb-16 text-center ">
-              <h2 class="text-3xl font-bold mb-8 font-robot">Latest Articles</h2>
-              <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+          <div class="container mx-auto my-16 px-4 md:px-8">
+            <section class="mb-12 text-center">
+              <h2 class="text-2xl md:text-3xl font-semibold mb-6">{index}</h2>
+              <div className="border border-gray-300 border-t-2 border-b-0 border-r-0 border-l-0">
+              </div>
+              <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 mt-3">
                 {currentItems.map((item) => (
-                  <div key={item.article_id} class="mb-6">
-                    <div class="relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg dark:shadow-black/20">
-                      <img src={item.subtitle} class="w-full h-40 md:h-52 object-cover" alt="Article Thumbnail" />
+                  <div key={item.article_id} class="mb-8">
+                    <div class="relative overflow-hidden rounded-lg shadow-lg bg-gray-100 dark:bg-gray-800 transform transition-transform duration-300 hover:scale-105">
+                      <img src={item.imageurl} class="w-full h-48 object-cover" alt="Article Thumbnail" />
                       <a href={`/article/${item.article_id}`}>
-                        <div class="absolute inset-0 opacity-0 transition duration-300 ease-in-out hover:opacity-100 bg-[hsla(0,0%,98.4%,.15)]">
-                        </div>
+                        <div class="absolute inset-0 opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
                       </a>
                     </div>
-                    <div class="font-small font-robot text-danger red:text-danger-500 text-left">
-                      {item.tag}
-                    </div>
-                    <h5 class="text-lg font-bold my-1 text-left">{item.title}</h5>
-                    <p class="mb-4 text-neutral-500 dark:text-neutral-300 text-left">
-                      <small>Published <u>{item.date}</u> by <a href="#!" class="text-dark-500">{item.name}</a></small>
+                    <div class="mt-3 font-semibold text-pink-500 text-left"><a href={`?tag=${item.tag}`}>{item.tag}</a></div>
+                    <a href={`/article/${item.article_id}`}>
+                      <h5 class="text-lg font-semibold my-1 text-left">{item.title}</h5>
+                    </a>
+                    <p class="mb-4 text-gray-600 dark:text-gray-300 text-left">
+                      <small>Published on <u>{item.date}</u> by <a href={`?author_id=${item.author_id}&author_name=${item.name}`} class="text-gray-500">{item.name}</a></small>
                     </p>
                   </div>
                 ))}
               </div>
             </section>
-          </div> */}
-
-          <Pagination
+          </div>
+          <div>
+          </div>
+          <div className="flex justify-center my-6">
+            <button
+              className="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+              onClick={handleLoadMore}
+            >
+              Load More
+            </button>
+          </div>
+          {/* <Pagination
             currentPage={currentPage}
             handlePageChange={handlePageChange}
             totalPages={totalPages}
-          />
+          /> */}
         </>
       )}
     </div>

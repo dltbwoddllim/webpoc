@@ -41,6 +41,46 @@ public class page {
 
         return articlesJson;
     }
+    public static String getArticleAfterid(Long id) {
+        //데이터 베이스에서 데이터 가져오기
+        List<ArticlesEntity> articleEntities = articlesRepository.getArticlesAfterArticleid(id);
+
+        // Entity 리스트를 DTO 리스트로 변환
+        List<ArticlesDTO> articleDTOs = articlesMapper.mapEntityListToDTOList(articleEntities);
+
+        //dtos print
+        // DTO 리스트를 JSON으로 변환
+        String articlesJson = articlesMapper.convertDTOsToJson(articleDTOs);
+
+        return articlesJson;
+    }
+    public static String getArticlesByTag(String tag) {
+        //데이터 베이스에서 데이터 가져오기
+        List<ArticlesEntity> articleEntities = articlesRepository.getArticlesByTag(tag);
+
+        // Entity 리스트를 DTO 리스트로 변환
+        List<ArticlesDTO> articleDTOs = articlesMapper.mapEntityListToDTOList(articleEntities);
+
+        //dtos print
+        // DTO 리스트를 JSON으로 변환
+        String articlesJson = articlesMapper.convertDTOsToJson(articleDTOs);
+
+        return articlesJson;
+    }
+
+    public static String getArticlesByAuthor(Long id) {
+        //데이터 베이스에서 데이터 가져오기
+        List<ArticlesEntity> articleEntities = articlesRepository.getArticlesByAuthor(id);
+
+        // Entity 리스트를 DTO 리스트로 변환
+        List<ArticlesDTO> articleDTOs = articlesMapper.mapEntityListToDTOList(articleEntities);
+
+        //dtos print
+        // DTO 리스트를 JSON으로 변환
+        String articlesJson = articlesMapper.convertDTOsToJson(articleDTOs);
+
+        return articlesJson;
+    }
 
     public static String getArticle(Long id){
         //데이터 베이스에서 데이터 가져오기

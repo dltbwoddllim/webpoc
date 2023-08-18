@@ -1,0 +1,13 @@
+-- 최근 기사들이 id가 뒤로 가도록 셋팅 다시해야 함.(맨 뒤 기사부터 셋팅해야 함.)
+INSERT INTO title (title, subtitle, imageurl, imagesource, date, readtime, content, tag) VALUES
+("ApeCoin hits all-time low", "subtitle", "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/2b708200-4629-4a36-815d-d239dbe92357/7umk2f.gif", "imagesource", "2023-08-3", 3, "content", "NFTS"),
+("Judge rejects Ripple ruling precedent", "subtitle", "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/3c899d4a-652e-4570-ace9-d49b5a5aa1fd/image.png", "imagesource", "2023-08-3", 2, "content", "REGULATIONS");
+("PayPal launches PYUSD stablecoin backed by US Dollar", "subtitle", "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/1b55cf51-e0a7-485e-9e7b-ceca09e0eb66/image.png", "imagesource", "2023-08-08", 3, "content", "WEB2"),
+("Huobi: Multichain deja vu?", "subtitle", "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/5abf2ae1-d42d-41b2-a52f-1cc29139f5f9/image.png", "imagesource", "2023-08-8", 2, "content", "SECURITY"),
+("Blockchain casinos just hit jackpot", "subtitle", "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/6b8a25ed-53a0-406d-a6fb-d108ebcbb2ae/image.png", "imagesource", "2023-08-10", 3, "content", "ALTCOINS"),
+("Fed targets stablecoins day after PYUSD launch", "subtitle", "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/b797ed04-a863-49bb-9436-f21b72451943/image.png", "imagesource", "2023-08-10", 2, "content", "REGULATION"),
+("Buy shares of your friends", "subtitle", "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/edc4af4b-396f-4c26-b89e-6f43bddbc01a/Screenshot_2023-08-14_at_3.52.48_PM.png", "imagesource", "2023-08-15", 3, "content", "DAPPS"),
+("Turn your attention to altcoins", "subtitle", "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/f9dc4d78-5829-4008-918c-a2b2f756d850/image.png", "imagesource", "2023-08-15", 2, "content", "ALTCOINS"),
+
+INSERT INTO article (author_id, title_id) VALUES
+(3,3),(1,4),(2,5),(1,6),(1,7),(1,8),(2,9),(1,10);

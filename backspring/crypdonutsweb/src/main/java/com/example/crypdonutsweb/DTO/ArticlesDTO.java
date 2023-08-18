@@ -9,6 +9,7 @@ public class ArticlesDTO {
     private String name;
     private String title;
     private String subtitle;
+    private String imageurl;
     private LocalDate date;
     private String tag;
 
@@ -17,13 +18,14 @@ public class ArticlesDTO {
 
     }
 
-    public ArticlesDTO(Long articleId, Long authorId, Long titleId, String name, String title, String subtitle, LocalDate date, String tag) {
+    public ArticlesDTO(Long articleId, Long authorId, Long titleId, String name, String title, String subtitle,String imageurl, LocalDate date, String tag) {
         this.article_id = articleId;
         this.author_id = authorId;
         this.title_id = titleId;
         this.name = name;
         this.title = title;
         this.subtitle = subtitle;
+        this.imageurl = imageurl;
         this.date = date;
         this.tag = tag;
     }
@@ -53,6 +55,39 @@ public class ArticlesDTO {
         this.title_id = title_id;
     }
 
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+
     public String getName() {
         return name;
     }
@@ -76,6 +111,7 @@ public class ArticlesDTO {
                 ", name='" + name + '\'' +
                 ", title='" + title + '\'' +
                 ", subtitle='" + subtitle + '\'' +
+                ", imageurl='" + imageurl + '\'' +
                 ", date=" + date +
                 ", tag='" + tag + '\'' +
                 '}';
@@ -90,6 +126,7 @@ public class ArticlesDTO {
                 ", \"name\":\"" + name + '\"' +
                 ", \"title\":\"" + title + '\"' +
                 ", \"subtitle\":\"" + subtitle + '\"' +
+                ", \"imageurl\":\"" + imageurl + '\"' +
                 ", \"date\":\"" + date + '\"' +
                 ", \"tag\":\"" + tag + '\"' +
                 '}';

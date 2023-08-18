@@ -14,6 +14,8 @@ public class ArticleMapper {
                 entity.getName(),
                 entity.getTitle(),
                 entity.getSubtitle(),
+                entity.getImageurl(),
+                entity.getImagesource(),
                 entity.getDate(),
                 entity.getTag(),
                 entity.getText()

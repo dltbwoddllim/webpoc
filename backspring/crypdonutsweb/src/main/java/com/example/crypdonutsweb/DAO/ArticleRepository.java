@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ArticleRepository extends JpaRepository<ArticleEntity, Long> {
-    @Query(value = "SELECT a.article_id, a.author_id, a.title_id, au.name, t.title, t.subtitle, t.date, t.text, t.tag " +
+    @Query(value = "SELECT a.article_id, a.author_id, a.title_id, au.name, t.title, t.subtitle,t.imageurl,t.imagesource, t.date, t.content, t.tag " +
             "FROM article a " +
             "JOIN author au ON a.author_id = au.author_id " +
             "JOIN title t ON a.title_id = t.title_id " +

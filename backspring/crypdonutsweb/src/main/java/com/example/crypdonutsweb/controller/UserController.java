@@ -20,6 +20,15 @@ public class UserController {
         return ResponseEntity.ok(articles);
     }
 
+    @GetMapping("/main/afterid/{id}")
+    public ResponseEntity<String> getLatestArticles(@PathVariable("id") Long id) {
+        String article = page.getArticleAfterid(id);
+        if (article == null) {
+            return ResponseEntity.badRequest().body("Article not found");
+        }
+        return ResponseEntity.ok(article);
+    }
+
     @GetMapping("/article/{id}")
     public ResponseEntity<String> getArticle(@PathVariable("id") Long id) {
 
@@ -28,6 +37,27 @@ public class UserController {
             return ResponseEntity.badRequest().body("Article not found");
         }
         return ResponseEntity.ok(article);
+    }
+
+    @GetMapping("/tag/{tag}")
+    public ResponseEntity<String> getArticleByTag(@PathVariable("tag") String tag) {
+
+        String articles = page.getArticlesByTag(tag);
+        if (articles.length()==2) {
+            return ResponseEntity.badRequest().body("tag not found");
+        }
+        return ResponseEntity.ok(articles);
+    }
+
+    @GetMapping("/author/{id}")
+    public ResponseEntity<String> getArticleByAuthor(@PathVariable("id") Long id) {
+
+        String articles = page.getArticlesByAuthor(id);
+
+        if (articles.length()==2) {
+            return ResponseEntity.badRequest().body("author not found");
+        }
+        return ResponseEntity.ok(articles);
     }
 
 }

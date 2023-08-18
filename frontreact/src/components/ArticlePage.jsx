@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import moment from "moment";
 import "moment/locale/en-gb";
 import { useParams } from "react-router-dom";
 
@@ -28,7 +27,7 @@ const ArticlePage = () => {
     return <div>Loading...</div>;
   }
 
-  const { name, title, subtitle, date, tag, text } = article;
+  const { name, title, subtitle, imageurl, imagesource, date, tag, text } = article;
 
   return (
     <div class="container mx-auto px-6 py-12 md:py-24">
@@ -36,12 +35,12 @@ const ArticlePage = () => {
         <h1 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 font-roboto">
           {title}
         </h1>
-        <img src={subtitle} alt="Image"
+        <img src={imageurl} alt="Image"
           class="w-full mb-6 rounded-lg shadow-lg dark:shadow-black/20" />
         <div class="text-left">
           <span class="text-gray-600 dark:text-gray-400 font-roboto">
             Published <u>{date}</u> by &nbsp;
-            <a href="#!" class="text-gray-500 font-medium">
+            <a href={`http://localhost:3000/?author_id=${article.author_id}&author_name=${name}`} class="text-gray-500 font-medium">
               {name}
             </a>
           </span>

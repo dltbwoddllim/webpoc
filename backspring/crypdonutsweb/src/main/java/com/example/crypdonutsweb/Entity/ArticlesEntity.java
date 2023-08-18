@@ -21,6 +21,7 @@ public class ArticlesEntity {
         private String name;
         private String title;
         private String subtitle;
+        private String imageurl;
         private LocalDate date;
         private String tag;
 
@@ -32,13 +33,14 @@ public class ArticlesEntity {
 
         // 생성자
         public ArticlesEntity(Long articleId, Long authorId, Long titleId, String name, String title,
-                              String subtitle, LocalDate date, String tag) {
+                              String subtitle, String imageurl, LocalDate date, String tag) {
             this.articleId = articleId;
             this.authorId = authorId;
             this.titleId = titleId;
             this.name = name;
             this.title = title;
             this.subtitle = subtitle;
+            this.imageurl = imageurl;
             this.date = date;
             this.tag = tag;
         }
@@ -107,5 +109,11 @@ public class ArticlesEntity {
         public void setTag(String tag) {
             this.tag = tag;
         }
+        public String getImageurl() {
+            return imageurl;
+        }
 
+        public void setImageurl(String imageurl) {
+            this.imageurl = imageurl;
+        }
 }

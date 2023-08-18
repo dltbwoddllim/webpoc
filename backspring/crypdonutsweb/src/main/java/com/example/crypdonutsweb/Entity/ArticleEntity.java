@@ -28,11 +28,12 @@ public class ArticleEntity {
 
     @Column(name = "subtitle")
     private String subtitle;
-
+    private String imageurl;
+    private String imagesource;
     @Column(name = "date")
     private LocalDate date;
 
-    @Column(name = "text")
+    @Column(name = "content")
     private String text;
 
     @Column(name = "tag")
@@ -45,13 +46,15 @@ public class ArticleEntity {
     }
     // 생성자 a.article_id, a.author_id, a.title_id, au.name, t.title, t.subtitle, t.date, t.text, t.tag
     public ArticleEntity(Long articleId, Long authorId, Long titleId, String name, String title,
-                         String subtitle, LocalDate date, String text, String tag) {
+                         String subtitle, String imageurl, String imagesource, LocalDate date, String text, String tag) {
         this.articleId = articleId;
         this.authorId = authorId;
         this.titleId = titleId;
         this.name = name;
         this.title = title;
         this.subtitle = subtitle;
+        this.imageurl = imageurl;
+        this.imagesource = imagesource;
         this.date = date;
         this.text = text;
         this.tag = tag;
@@ -104,6 +107,22 @@ public class ArticleEntity {
 
     public void setSubtitle(String subtitle) {
         this.subtitle = subtitle;
+    }
+
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
+    }
+
+    public String getImagesource() {
+        return imagesource;
+    }
+
+    public void setImagesource(String imagesource) {
+        this.imagesource = imagesource;
     }
 
     public LocalDate getDate() {
