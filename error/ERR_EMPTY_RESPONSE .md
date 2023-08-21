@@ -1,0 +1,1 @@
+https://mkil.tistory.com/470 - 포트 열려 있나 확인.

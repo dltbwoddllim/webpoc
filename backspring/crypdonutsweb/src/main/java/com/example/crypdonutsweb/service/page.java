@@ -68,6 +68,20 @@ public class page {
         return articlesJson;
     }
 
+    public static String getArticlesByTagAfterid(String tag, Long id) {
+        //데이터 베이스에서 데이터 가져오기
+        List<ArticlesEntity> articleEntities = articlesRepository.getArticlesByTagAfterid(tag, id);
+
+        // Entity 리스트를 DTO 리스트로 변환
+        List<ArticlesDTO> articleDTOs = articlesMapper.mapEntityListToDTOList(articleEntities);
+
+        //dtos print
+        // DTO 리스트를 JSON으로 변환
+        String articlesJson = articlesMapper.convertDTOsToJson(articleDTOs);
+
+        return articlesJson;
+    }
+
     public static String getArticlesByAuthor(Long id) {
         //데이터 베이스에서 데이터 가져오기
         List<ArticlesEntity> articleEntities = articlesRepository.getArticlesByAuthor(id);

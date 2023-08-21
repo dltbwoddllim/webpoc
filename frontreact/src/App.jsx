@@ -8,8 +8,7 @@ import ArticlePage from "./components/ArticlePage";
 import Newsletter from "./components/newsletter";
 
 
-// const API_BASE_URL = "http://34.64.40.161:8080";
-const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL = "http://34.64.73.28:8080";
 
 const App = () => {
   const [newsItems, setNewsItems] = useState([]);

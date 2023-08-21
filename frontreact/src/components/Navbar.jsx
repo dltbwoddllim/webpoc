@@ -26,12 +26,17 @@ function Navbar() {
         <div className="relative group">
           <button className="hover:bg-gray-200 font-robot">Topics</button>
           <div className="hidden absolute z-10 top-full left-0 bg-white border shadow group-hover:block">
-            <a href="/?tag=NFTS" className="block px-4 py-2 hover:text-blue-500 font-robot">NFTS</a>
-            <a href="/?tag=ALTCOINS" className="block px-4 py-2 hover:text-blue-500 font-robot">Altcoins</a>
-            <a href="/?tag=DAPPS" className="block px-4 py-2 hover:text-blue-500 font-robot">DAPPS</a>
-            <a href="/?tag=REGULATIONS" className="block px-4 py-2 hover:text-blue-500 font-robot">Regulations</a>
+            <a href="/?tag=WEB2" className="block px-4 py-2 hover:text-blue-500 font-robot">WEB2</a>
+            <a href="/?tag=DEFI" className="block px-4 py-2 hover:text-blue-500 font-robot">Defi</a>
+            <a href="/?tag=SECURITY" className="block px-4 py-2 hover:text-blue-500 font-robot">Security</a>
+            <a href="/?tag=MEMECOIN" className="block px-4 py-2 hover:text-blue-500 font-robot">Meme Coin</a>
             <a href="/?tag=TOOLS" className="block px-4 py-2 hover:text-blue-500 font-robot">Tools</a>
-            <a href="/?tag=MARKETS" className="block px-4 py-2 hover:text-blue-500 font-robot">Markets</a>
+            <a href="/?tag=NFT" className="block px-4 py-2 hover:text-blue-500 font-robot">NFT</a>
+            <a href="/?tag=ETHEREUM" className="block px-4 py-2 hover:text-blue-500 font-robot">Ethereum</a>
+            <a href="/?tag=BITCOIN" className="block px-4 py-2 hover:text-blue-500 font-robot">Bitcoin</a>
+            <a href="/?tag=ALTCOINS" className="block px-4 py-2 hover:text-blue-500 font-robot">Altcoins</a>
+            <a href="/?tag=REGULATION" className="block px-4 py-2 hover:text-blue-500 font-robot">REGULATION</a>
+            <a href="/?tag=MARKET" className="block px-4 py-2 hover:text-blue-500 font-robot">Market</a>
           </div>
         </div>
         <button className="hover:bg-gray-200 font-robot"><a href="/" className="hover:bg-gray-200 font-robot">Latest</a></button>

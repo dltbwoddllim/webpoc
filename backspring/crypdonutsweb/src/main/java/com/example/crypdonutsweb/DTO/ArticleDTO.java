@@ -25,7 +25,7 @@ public class ArticleDTO {
         this.title = title;
         this.subtitle = subtitle;
         this.imageurl = imageurl;
-
+        this.imagesource = imagesource;
         this.date = date;
         this.text = text;
         this.tag = tag;

@@ -15,9 +15,11 @@ CREATE TABLE `title` (
   `title_id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
   `subtitle` varchar(255) DEFAULT NULL,
+  `imageurl` varchar(255) DEFAULT NULL,
+  `imagesource` varchar(255) DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `readtime` time DEFAULT NULL,
-  `text` text,
+  `readtime` int DEFAULT NULL,
+  `content` text,
   `tag` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`title_id`)
 );

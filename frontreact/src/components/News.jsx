@@ -7,7 +7,7 @@ import axios from "axios";
 import Loading from "./Loading";
 import Newsletter from "./newsletter";
 
-const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL = "http://34.64.73.28:8080";
 
 const NewsPage = () => {
   const { newsItems, isLoading, filteredNewsItems } = useContext(NewsContext);
@@ -31,20 +31,18 @@ const NewsPage = () => {
   }
   const startIndex = 0;
   const endIndex = startIndex + itemsPerPage;
-  // var currentItems = news?.slice(startIndex, endIndex);
-  // //last item in currentitems
-  // var lastItemid = currentItems[currentItems.length - 1];
-  // console.log(lastItemid)
-  // type of newsItems
-  // console.log(typeof newsItems)
-  // console.log(newsItems)
+
   const [currentItems, setCurrentItems] = useState(news?.slice(startIndex, endIndex));
   var lastItemid = currentItems[currentItems.length - 1];
   console.log(lastItemid)
   const fetchNews = useCallback(async (lastItemid) => {
     try {
+      var url = "";
       const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:3000' };
-      const response = await axios.get(`${API_BASE_URL}/User/main/afterid/${lastItemid}`, { headers });
+      if (tag != null) {url = (`${API_BASE_URL}/User/tag/${tag}/id/${lastItemid}`)}
+      else{url = (`${API_BASE_URL}/User/main/afterid/${lastItemid}`)}
+      console.log(url)
+      const response = await axios.get(url, { headers });
       setCurrentItems(currentItems => [...currentItems, ...response.data]); // Update currentItems using prevState
       console.log(currentItems)
       setLoading(false);
@@ -85,7 +83,9 @@ const NewsPage = () => {
                       <h5 class="text-lg font-semibold my-1 text-left">{item.title}</h5>
                     </a>
                     <p class="mb-4 text-gray-600 dark:text-gray-300 text-left">
-                      <small>Published on <u>{item.date}</u> by <a href={`?author_id=${item.author_id}&author_name=${item.name}`} class="text-gray-500">{item.name}</a></small>
+                      <small>Published on <u>{item.date}</u> 
+                      {/* by <a href={`?author_id=${item.author_id}&author_name=${item.name}`} class="text-gray-500">{item.name}</a> */}
+                      </small>
                     </p>
                   </div>
                 ))}

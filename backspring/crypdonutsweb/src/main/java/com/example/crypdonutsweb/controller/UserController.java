@@ -49,6 +49,16 @@ public class UserController {
         return ResponseEntity.ok(articles);
     }
 
+    @GetMapping("/tag/{tag}/id/{id}")
+    public ResponseEntity<String> getArticleByTagAfterId(@PathVariable("tag") String tag, @PathVariable("id") Long id) {
+
+        String articles = page.getArticlesByTagAfterid(tag, id);
+        if (articles.length()==2) {
+            return ResponseEntity.badRequest().body("articles not found");
+        }
+        return ResponseEntity.ok(articles);
+    }
+
     @GetMapping("/author/{id}")
     public ResponseEntity<String> getArticleByAuthor(@PathVariable("id") Long id) {
 

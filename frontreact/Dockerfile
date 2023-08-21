@@ -2,7 +2,7 @@
 FROM node:18.12.0-alpine
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /WEBPOC/frontreact
 
 # Copy package.json and package-lock.json to the container
 COPY package*.json ./
@@ -17,7 +17,6 @@ COPY . .
 RUN npm run build
 
 # Set environment variables, if necessary
-# ENV REACT_APP_API_URL=http://your-backend-api-url
 
 # Expose the port your React app is running on
 EXPOSE 3000
