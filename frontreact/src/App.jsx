@@ -5,12 +5,12 @@ import { NewsContextProvider } from "../contexts/NewsContext";
 import Navbar from "./components/Navbar";
 import NewsPage from "./components/News";
 import ArticlePage from "./components/ArticlePage";
-import Newsletter from "./components/newsletter";
 
 
-const API_BASE_URL = "http://34.64.73.28:8080";
+const API_BASE_URL = "http://34.22.93.133:8080";
 
 const App = () => {
+  
   const [newsItems, setNewsItems] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");

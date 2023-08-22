@@ -3,7 +3,7 @@ import axios from "axios";
 import "moment/locale/en-gb";
 import { useParams } from "react-router-dom";
 
-const API_BASE_URL = "http://34.64.73.28:8080";
+const API_BASE_URL = "http://34.22.93.133:8080";
 
 const ArticlePage = () => {
   const { id } = useParams();

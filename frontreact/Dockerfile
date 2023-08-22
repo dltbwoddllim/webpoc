@@ -2,8 +2,7 @@
 FROM node:18.12.0-alpine
 
 # Set the working directory inside the container
-WORKDIR /WEBPOC/frontreact
-
+WORKDIR /app
 # Copy package.json and package-lock.json to the container
 COPY package*.json ./
 
@@ -15,8 +14,6 @@ COPY . .
 
 # Build the React app
 RUN npm run build
-
-# Set environment variables, if necessary
 
 # Expose the port your React app is running on
 EXPOSE 3000

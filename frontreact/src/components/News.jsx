@@ -1,13 +1,10 @@
 import React, { useContext, useState, useCallback } from "react";
-import moment from "moment";
 import "moment/locale/en-gb";
 import { NewsContext } from "../../contexts/NewsContext";
-import Pagination from "./Pagination";
 import axios from "axios";
 import Loading from "./Loading";
-import Newsletter from "./newsletter";
 
-const API_BASE_URL = "http://34.64.73.28:8080";
+const API_BASE_URL = "http://34.22.93.133:8080";
 
 const NewsPage = () => {
   const { newsItems, isLoading, filteredNewsItems } = useContext(NewsContext);
