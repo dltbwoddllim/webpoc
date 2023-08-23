@@ -4,7 +4,7 @@ import { NewsContext } from "../../contexts/NewsContext";
 import axios from "axios";
 import Loading from "./Loading";
 
-const API_BASE_URL = "http://34.22.93.133:8080";
+const API_BASE_URL = "http://localhost:8080";
 
 const NewsPage = () => {
   const { newsItems, isLoading, filteredNewsItems } = useContext(NewsContext);
@@ -25,13 +25,11 @@ const NewsPage = () => {
   }
   else {
     index = "Latest News!"
-  }
+  }0
   const startIndex = 0;
   const endIndex = startIndex + itemsPerPage;
-
   const [currentItems, setCurrentItems] = useState(news?.slice(startIndex, endIndex));
   var lastItemid = currentItems[currentItems.length - 1];
-  console.log(lastItemid)
   const fetchNews = useCallback(async (lastItemid) => {
     try {
       var url = "";

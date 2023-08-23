@@ -7,7 +7,7 @@ import NewsPage from "./components/News";
 import ArticlePage from "./components/ArticlePage";
 
 
-const API_BASE_URL = "http://34.22.93.133:8080";
+const API_BASE_URL = "http://localhost:8080";
 
 const App = () => {
   
@@ -21,6 +21,8 @@ const App = () => {
       const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:3000' };
       const response = await axios.get(`${API_BASE_URL}/User/main`, { headers });
       setNewsItems(response.data);
+      console.log(typeof response.data[0])
+      console.log( response.data[0])
       setLoading(false);
     } catch (error) {
       console.log(error);

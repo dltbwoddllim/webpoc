@@ -3,19 +3,22 @@ import axios from "axios";
 import "moment/locale/en-gb";
 import { useParams } from "react-router-dom";
 
-const API_BASE_URL = "http://34.22.93.133:8080";
+const API_BASE_URL = "http://localhost:8080";
 
 const ArticlePage = () => {
   const { id } = useParams();
   const [article, setArticle] = useState(null);
 
+
+  
   useEffect(() => {
     const fetchArticle = async () => {
       try {
         const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:3000' };
         const response = await axios.get(`${API_BASE_URL}/User/article/${id}`, { headers });
-        console.log(response.data)
         setArticle(response.data);
+        console.log(response.data)
+        //string to object
       } catch (error) {
         console.error(error);
       }
@@ -27,13 +30,12 @@ const ArticlePage = () => {
   if (!article) {
     return <div>Loading...</div>;
   }
-
-  const { name, title, subtitle, imageurl, imagesource, date, tag, text } = article;
+  var { name, title, subtitle, imageurl, imagesource, date, tag, text } = article;
 
   return (
     <div className="container mx-auto px-6 py-10 md:py-24">
       <article className="max-w-3xl mx-auto">
-        <div class="mt-3 font-semibold text-pink-500 text-left"><a href={`http://localhost:3000?tag=${tag}`}>{tag}</a></div>
+        <div className="mt-3 font-semibold text-pink-500 text-left"><a href={`http://localhost:3000?tag=${tag}`}>{tag}</a></div>
         <h1 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 font-roboto">
           {title}
         </h1>
